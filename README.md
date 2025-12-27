@@ -9,10 +9,29 @@
 | File | Purpose |
 |------|---------|
 | [PRE-COMMIT-CHECKLIST.md](PRE-COMMIT-CHECKLIST.md) | ⚠️ Required checks before every commit |
+| [DOCUMENTATION-SYNC-PROTOCOL.md](DOCUMENTATION-SYNC-PROTOCOL.md) | 🛑 CRITICAL: Keep CHANGELOG, CLAUDE.md, README.md synchronized |
 | [GIT-WORKFLOW.md](GIT-WORKFLOW.md) | Issue → Branch → Tag workflow |
 | [VERSIONING.md](VERSIONING.md) | Semantic versioning and changelog standards |
 | [USER-VALIDATION.md](USER-VALIDATION.md) | User approval requirements before commits |
 | [WORKTREE-WORKFLOW.md](WORKTREE-WORKFLOW.md) | Parallel development with worktrees |
+| [MCP-INSTALLATION-GUIDE.md](MCP-INSTALLATION-GUIDE.md) | 🔧 MCP server installation best practices (prevents recurring issues) |
+| [TASKMASTER-FINDINGS.md](TASKMASTER-FINDINGS.md) | 📊 TaskMaster + Claude Code integration test results and analysis |
+| [TASKMASTER-DATA-MANAGEMENT-GUIDE.md](TASKMASTER-DATA-MANAGEMENT-GUIDE.md) | 📘 Practical guide for using TaskMaster without AI features |
+| [pre-commit-hook-template.sh](pre-commit-hook-template.sh) | Optional Git hook to enforce documentation sync |
+
+### TaskMaster Workflow Templates (WORKFLOWS/ directory)
+
+| Template | Purpose | Validation Gates |
+|----------|---------|------------------|
+| [WORKFLOWS/TASKMASTER-DOC-SYNC.md](WORKFLOWS/TASKMASTER-DOC-SYNC.md) | Keep docs synchronized before commits | 2 |
+| [WORKFLOWS/TASKMASTER-GIT-ENHANCEMENT.md](WORKFLOWS/TASKMASTER-GIT-ENHANCEMENT.md) | Full Issue → Branch → Tag workflow | 6 |
+| [WORKFLOWS/TASKMASTER-USAGE-GUIDE.md](WORKFLOWS/TASKMASTER-USAGE-GUIDE.md) | How to use TaskMaster workflows | - |
+| [WORKFLOWS/TEMPLATE-BLANK.md](WORKFLOWS/TEMPLATE-BLANK.md) | Template for creating new workflows | - |
+| [WORKFLOWS/README.md](WORKFLOWS/README.md) | Overview and workflow catalog | - |
+
+**MCP Requirements:**
+- TaskMaster MCP (installed)
+- Context7 MCP (installed, free tier)
 
 ---
 
@@ -144,4 +163,4 @@ git clone https://github.com/troyshelton/dev-standards.git .standards
 
 *Location:* `/Users/troyshelton/Projects/.standards/`
 *Repository:* https://github.com/troyshelton/dev-standards (optional backup)
-*Last Updated:* 2025-10-09
+*Last Updated:* 2025-10-11

@@ -77,7 +77,7 @@ project-name/
 
 ## Version Tracking Standards
 
-### For Web Projects (HTML/JavaScript)
+### For Web Projects (HTML/CSS/JavaScript)
 
 #### HTML Meta Tags (Required)
 ```html
@@ -162,7 +162,7 @@ RECORD version_info(
 )
 ```
 
-### For Mixed Projects (CCL + Web)
+### For MPage Projects (CCL + Web)
 
 #### Coordinated Versioning (Required)
 - **Same version number** in both CCL and web components
@@ -330,7 +330,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [ ] Git tag created for version
 - [ ] Team notified of deployment
 
-#### For Mixed Projects (CCL + Web)
+#### For MPage Projects (CCL + Web)
 - [ ] CCL and web versions match
 - [ ] Cross-references verified
 - [ ] Both components tested together

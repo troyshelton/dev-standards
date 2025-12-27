@@ -8,6 +8,16 @@
 
 **❌ STOP - Do NOT commit until user validates!**
 
+- [ ] **For CCL changes (CRITICAL - See CCL-MODIFICATION-WORKFLOW.md):**
+  - Find working example from another project (sepsis dashboard, etc.)
+  - Show side-by-side comparison: current vs proposed vs working example
+  - Reference CCL_SYNTAX_GUIDE.md section
+  - Explain why this pattern works
+  - Wait for explicit "approved" confirmation
+  - Make ONLY the approved change
+  - Show git diff for final verification
+  - **NO ASSUMPTIONS** - CCL syntax is complex and differs from SQL
+
 - [ ] **For UI changes:**
   - Share screenshot from Chrome DevTools MCP
   - OR provide test URL for user to verify in their browser
@@ -80,23 +90,56 @@
 
 ## Quick Validation
 
-**Before committing, run:**
+**⚠️ MANDATORY VERIFICATION BEFORE EVERY COMMIT ⚠️**
+
+Run these commands to verify documentation is synchronized:
 
 ```bash
-# Check current version and date in docs
-grep "Last Updated:" CLAUDE.md README.md
-grep "Version" CLAUDE.md README.md | head -5
+# Get current date (use THIS date, don't hardcode!)
+TODAY=$(date '+%Y-%m-%d')
+echo "Today's date: $TODAY"
 
-# Check for references to deleted repos
-grep -r "oracle-jet-mvvm-no-node-mpage" CLAUDE.md README.md
+# Verify CHANGELOG has today's date
+if grep -q "$TODAY" CHANGELOG.md; then
+    echo "✅ CHANGELOG.md has today's date"
+else
+    echo "❌ CHANGELOG.md missing today's date - UPDATE IT!"
+fi
 
-# Check for closed issues in TODO sections
-grep -A10 "Outstanding TODOs" CLAUDE.md README.md
+# Verify CLAUDE.md has today's date
+if grep -q "Date.*: $TODAY\|Last Updated: $TODAY" CLAUDE.md; then
+    echo "✅ CLAUDE.md has today's date"
+else
+    echo "❌ CLAUDE.md date is out of sync - UPDATE IT!"
+fi
 
-# Verify files staged
-git status
+# Verify README.md has today's date
+if grep -q "Last Updated.*: $TODAY" README.md; then
+    echo "✅ README.md has today's date"
+else
+    echo "❌ README.md date is out of sync - UPDATE IT!"
+fi
+
+# Show version summary
+echo ""
+echo "=== VERSION SUMMARY ==="
+echo "CHANGELOG: $(grep -m1 "^## \[" CHANGELOG.md || echo 'NOT FOUND')"
+echo "CLAUDE.md: $(grep -m1 "Current Version:" CLAUDE.md || echo 'NOT FOUND')"
+echo "README.md: $(grep -m1 "^\*\*Version\*\*:" README.md || echo 'NOT FOUND')"
+
+echo ""
+echo "⚠️ ALL three should show the SAME version!"
+echo "⚠️ If ANY show ❌ or versions don't match: STOP and update files!"
+echo ""
+echo "See: /Users/troyshelton/Projects/.standards/DOCUMENTATION-SYNC-PROTOCOL.md"
 ```
 
 ---
 
-**If ANY checkbox is unchecked, DO NOT COMMIT!**
+**🛑 STOP! If ANY check fails, DO NOT COMMIT! 🛑**
+
+**Update the files, then run the validation again.**
+
+---
+
+**If ALL checks pass ✅, proceed with commit.**
